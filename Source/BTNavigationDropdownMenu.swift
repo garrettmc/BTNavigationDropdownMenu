@@ -339,6 +339,11 @@ public class BTNavigationDropdownMenu: UIView {
         self.tableView.reloadData()
     }
     
+    public func select(titleRow: Int) {
+        self.tableView.didSelectRowAtIndexPath(indexPath: IndexPath(section: 0, row: titleRow))
+    }
+    
+    
     public func show() {
         if self.isShown == false {
             self.showMenu()
