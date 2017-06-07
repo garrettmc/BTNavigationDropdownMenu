@@ -309,8 +309,10 @@ open class BTNavigationDropdownMenu: UIView {
             if selfie.shouldChangeTitleText! {
                 selfie.setMenuTitle("\(selfie.tableView.items[indexPath])")
             }
-            self?.hideMenu()
-            self?.layoutSubviews()
+            if selfie.isShown {
+                selfie.hideMenu()
+            }
+            selfie.layoutSubviews()
         }
         
         // Add background view & table view to container view
