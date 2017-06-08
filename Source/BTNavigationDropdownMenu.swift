@@ -340,11 +340,11 @@ open class BTNavigationDropdownMenu: UIView {
         self.menuWrapper.frame.origin.y = self.navigationController!.navigationBar.frame.maxY
         self.tableView.reloadData()
     }
-    
+
+    // Programmatially set the title's row.
     public func select(titleRow: Int) {
-        if tableView.selectedIndexPath != titleRow {
-            self.tableView.tableView(tableView, didSelectRowAt: IndexPath(row: titleRow, section: 0))
-        }
+        tableView.selectedIndexPath = titleRow
+        setMenuTitle("\(tableView.items[titleRow])")
     }
     
     open func show() {
