@@ -345,6 +345,7 @@ open class BTNavigationDropdownMenu: UIView {
     public func select(titleRow: Int) {
         tableView.selectedIndexPath = titleRow
         setMenuTitle("\(tableView.items[titleRow])")
+        layoutSubviews()
     }
     
     open func show() {
@@ -595,6 +596,7 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     // Table view delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         selectedIndexPath = (indexPath as NSIndexPath).row
         self.selectRowAtIndexPathHandler!((indexPath as NSIndexPath).row)
         self.reloadData()
@@ -602,6 +604,8 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         cell?.contentView.backgroundColor = self.configuration.cellSelectionColor
         cell?.textLabel?.textColor = self.configuration.selectedCellTextLabelColor
     }
+    
+    
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as? BTTableViewCell
